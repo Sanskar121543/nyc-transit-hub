@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>NYC Transit Hub</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <header class="top">
+    <div class="brand">
+      <h1>NYC Transit Hub</h1>
+      <p>Live subway routing, and the power to ask what if a line goes down</p>
+    </div>
+    <div id="status" class="pill pill-wait" role="status">Connecting</div>
+  </header>
+
+  <main>
+    <section class="panel" aria-label="Trip planner">
+      <form id="plan" autocomplete="off">
+        <div class="stations">
+          <label class="field">
+            <span>From</span>
+            <input id="from" list="station-list" placeholder="Start typing a station" required>
+          </label>
+          <button type="button" id="swap" class="swap" title="Swap stations" aria-label="Swap stations">&#8645;</button>
+          <label class="field">
+            <span>To</span>
+            <input id="to" list="station-list" placeholder="Start typing a station" required>
+          </label>
+        </div>
+        <div class="row">
+          <label class="field small">
+            <span>Leave at (New York time)</span>
+            <input id="time" type="time">
+          </label>
+          <button type="submit" id="go" class="primary">Find route</button>
+        </div>
+
+        <fieldset class="closures">
+          <legend>Close a line and look</legend>
+          <p class="hint">Suspend any line and the same engine plans the trip again, with the minutes it costs you.</p>
+          <div id="chips" class="chips"></div>
+          <button type="button" id="clear" class="link" hidden>Reopen all lines</button>
+        </fieldset>
+      </form>
+
+      <div id="message" class="message" hidden></div>
+      <div id="results"></div>
+    </section>
+
+    <section class="mapwrap" aria-label="Network map">
+      <svg id="map" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Subway network map"></svg>
+      <div class="zoom">
+        <button type="button" id="zin" aria-label="Zoom in">+</button>
+        <button type="button" id="zout" aria-label="Zoom out">&minus;</button>
+        <button type="button" id="zfit" aria-label="Reset view">&#8962;</button>
+      </div>
+    </section>
+  </main>
+
+  <datalist id="station-list"></datalist>
+  <script src="/app.js"></script>
+</body>
+</html>
