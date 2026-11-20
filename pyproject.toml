@@ -1,0 +1,17 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "nyc-transit-hub"
+version = "1.0.0"
+description = "Live NYC subway routing with line-closure what-if planning, built on MTA GTFS and GTFS-realtime feeds"
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = []
+
+[project.scripts]
+nyc-transit-hub = "transit_hub.cli:main"
+
+[tool.setuptools]
+packages = ["transit_hub"]
